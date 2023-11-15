@@ -14,4 +14,7 @@ exports.Query= {
     product: (parent, {id}, {products}) => {
       return products.find((product) => product.id === id);
     },
+    reviews:(parent,args,{reviews})=>{
+      return reviews
+    }
   }

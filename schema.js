@@ -7,6 +7,7 @@ type Query {
   categories: [Category!]!
   category(id: ID!): Category!
   product(id: ID!): Product!
+  reviews:[Review!]!
 }
 type Product {
   name: String!
@@ -22,5 +23,12 @@ type Category {
   name: String!
   id: String
   product: [Product!]!
+}
+type Review{
+      date: String
+      title: String
+      comment: String
+      rating: Int
+      productId: String
 }
 `;
