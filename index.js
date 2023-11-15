@@ -3,16 +3,22 @@ const { typeDefs } = require("./schema");
 const {Product} = require('./resolvers/Product');
 const {Category} = require('./resolvers/Category');
 const {Query} = require('./resolvers/Query');
+const { products, categories } = require("./db");
+
 const port = 4200;
 
-const resolvers = {
-Product,
-Category,
-Query
-};
+
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers: {
+    Product,
+    Category,
+    Query,
+  },
+  context:{
+    products,
+     categories
+  }
 });
 
 server.listen(port).then(({ url }) => {
