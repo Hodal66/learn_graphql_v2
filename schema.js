@@ -18,6 +18,7 @@ type Product {
   onSale: Boolean!
   categoryId: String!
   category: Category
+  reviews:[Review!]!
 }
 type Category {
   name: String!
@@ -25,10 +26,11 @@ type Category {
   product: [Product!]!
 }
 type Review{
-      date: String
-      title: String
-      comment: String
-      rating: Int
+      id:ID!
+      date: String!
+      title: String!
+      comment: String!
+      rating: Int!
       productId: String
 }
 `;
