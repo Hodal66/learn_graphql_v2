@@ -2,8 +2,20 @@ exports.Query= {
     hello: () => {
       return "Hello Again!!";
     },
-    products: (parent, args, {products}) => {
-      return products;
+    products: (parent, {filter}, {products}) => {
+      let filteredProducts = products;
+//  console.log(filter.onSale);
+    if(filter){
+      if(filter.onSale){
+        // console.log(filteredProducts)
+        filteredProducts = products.filter(product=>
+        product.onSale === filter.onSale
+        )
+      }
+    }
+        return filteredProducts
+
+  
     },
     categories: (parent, args, {categories}) => {
       return categories;
