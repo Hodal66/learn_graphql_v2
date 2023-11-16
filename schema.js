@@ -23,7 +23,7 @@ type Product {
 type Category {
   name: String!
   id: String
-  product: [Product!]!
+  product(filter:ProductFilterInput): [Product!]!
 }
 type Review{
       id:ID!
@@ -35,5 +35,6 @@ type Review{
 }
 input ProductFilterInput{
   onSale:Boolean
+  avgRating:Int
 }
 `;
