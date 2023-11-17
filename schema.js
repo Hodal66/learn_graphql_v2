@@ -16,8 +16,13 @@ type Mutation{
   deleteCategory(id:ID!):Boolean!
   deleteProduct(id:ID!):Boolean!
   deleteReview(id:ID):Boolean!
+  updateCategory(id:ID, input:UpdateCategoryInput):Category
+  updateProduct(id:ID, input:UpdateProductInput):Product
+  updateReview(id:ID, input:UpdateReviewInput):Review
+
  }
 type Product {
+  id:ID!
   name: String!
   description: String!
   quantity: Int!
@@ -39,6 +44,14 @@ input AddProductInput{
   onSale: Boolean!
   categoryId: String!
 }
+input UpdateProductInput{
+  name: String!
+  description: String!
+  quantity: Int!
+  price: Float!
+  image: String!
+  onSale: Boolean!
+}
 
 type Category {
   name: String!
@@ -48,6 +61,10 @@ type Category {
 input AddCategoryInput{
   name: String!
   id: String
+}
+
+input UpdateCategoryInput{
+  name:String!
 }
 type Review{
       id:ID!
@@ -66,6 +83,14 @@ input AddReviewInput{
       title: String!
       comment: String!
       rating: Int!
+      productId: String
+}
+
+input UpdateReviewInput{
+  date: String
+      title: String
+      comment: String
+      rating: Int
       productId: String
 }
 `;

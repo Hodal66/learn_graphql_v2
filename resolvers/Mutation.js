@@ -62,5 +62,41 @@ exports.Mutation = {
   deleteReview:(parent,{id},{db})=>{
     db.reviews = db.reviews.filter(review=>review.id !== id);
     return true
+  },
+  //Updating content in graphql 
+  updateCategory:(parent, {id, input}, {db})=>{
+    const index= db.categories.findIndex(category=>category.id === id);
+ if(index == -1) return null;
+    db.categories[index] = {
+      ...db.categories[index],
+      ...input
+    }
+    return db.categories[index];
+
+  },
+  updateProduct:(parent,{id,input},{db})=>{
+    // const {  name,
+    //   description,
+    //   quantity,
+    //   price,
+    //   image,
+    //   onSale}= args
+console.log("ndikuhagera da ...........!!!!!!!");
+    const productIndex = db.products.findIndex(product => product.id === id);
+  if(productIndex == -1) return null;
+    db.products[productIndex]={
+      ...db.products[productIndex],
+      ...input
+    }
+    return db.products[productIndex];
+  },
+  updateReview:(parent,{id,input},{db})=>{
+    const reviewIndex = db.reviews.findIndex(review =>review.id === id);
+    if(reviewIndex === -1) return null;
+    db.reviews[reviewIndex] = {
+      ...db.reviews[reviewIndex],
+      ...input,
+    }
+    return db.reviews[reviewIndex];
   }
 };
