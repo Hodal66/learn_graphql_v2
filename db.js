@@ -283,7 +283,7 @@ const products = [
       productId: "47bf3941-9c8b-42c0-9c72-7f3985492a5b",
     },
   ];
-  module.exports = {
+  exports.db = {
     categories,
     products,
     reviews

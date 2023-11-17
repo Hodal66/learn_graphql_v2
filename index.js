@@ -4,7 +4,7 @@ const {Product} = require('./resolvers/Product');
 const {Mutation} = require('./resolvers/Mutation');
 const {Category} = require('./resolvers/Category');
 const {Query} = require('./resolvers/Query');
-const { products, categories, reviews } = require("./db");
+const { db } = require("./db");
 const port = 4200;
 
 
@@ -17,9 +17,7 @@ const server = new ApolloServer({
     Mutation
   },
   context:{
-    products,
-     categories,
-     reviews
+    db
   }
 });
 
